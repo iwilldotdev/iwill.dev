@@ -1,15 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: "Kanit", ui-sans-serif, system-ui, sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-primary: rgb(102, 51, 153);
+  --color-primary-100: rgb(230, 217, 242);
+  --color-primary-200: rgb(204, 179, 230);
+  --color-primary-300: rgb(179, 140, 217);
+  --color-primary-400: rgb(153, 102, 204);
+  --color-primary-500: rgb(128, 64, 191);
+  --color-primary-600: var(--color-primary);
+  --color-primary-700: rgb(77, 38, 115);
+  --color-primary-800: rgb(51, 26, 77);
+  --color-primary-900: rgb(26, 13, 38);
+
+  --color-secondary: rgb(162, 47, 158);
+  --color-secondary-100: rgb(244, 215, 243);
+  --color-secondary-200: rgb(232, 176, 230);
+  --color-secondary-300: rgb(221, 136, 218);
+  --color-secondary-400: rgb(209, 97, 205);
+  --color-secondary-500: rgb(198, 57, 193);
+  --color-secondary-600: var(--color-secondary);
+  --color-secondary-700: rgb(119, 34, 116);
+  --color-secondary-800: rgb(79, 23, 77);
+  --color-secondary-900: rgb(40, 11, 39);
+
+  --color-tertiary: rgb(47, 51, 162);
+  --color-tertiary-100: rgb(215, 216, 244);
+  --color-tertiary-200: rgb(176, 178, 232);
+  --color-tertiary-300: rgb(136, 139, 221);
+  --color-tertiary-400: rgb(97, 101, 209);
+  --color-tertiary-500: rgb(57, 62, 198);
+  --color-tertiary-600: var(--color-tertiary);
+  --color-tertiary-700: rgb(34, 37, 119);
+  --color-tertiary-800: rgb(23, 25, 79);
+  --color-tertiary-900: rgb(11, 12, 40);
+
+  --color-font-body: var(--color-tertiary-100);
+  --color-font-title: var(--color-primary-300);
+  --color-font-subtitle: var(--color-primary-400);
+
+  --color-button: var(--color-secondary-700);
+  --color-button-hover: var(--color-secondary-600);
+  --color-button-disabled: var(--color-secondary-900);
 }
 
 html,
 body {
-  @apply bg-white dark:bg-neutral-950;
-
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
+  @apply bg-neutral-950;
 }
