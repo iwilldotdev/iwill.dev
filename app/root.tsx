@@ -9,6 +9,42 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import { Container } from "./components/layout/container";
+import { FuzzyText } from "./components/react-bits/fuzzy-text";
+import { LetterGlitch } from "./components/react-bits/letter-glitch";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "iwill.dev | Aprendendo e compartilhando a jornada" },
+    {
+      name: "description",
+      content:
+        "Desenvolvedor front-end aprendendo em público e compartilhando conteúdo técnico prático e didático.",
+    },
+
+    {
+      property: "og:title",
+      content: "iwill.dev | Aprendendo e compartilhando a jornada",
+    },
+    {
+      property: "og:description",
+      content:
+        "Desenvolvedor front-end aprendendo em público e compartilhando conteúdo técnico prático e didático.",
+    },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: "https://iwill.dev" },
+    { property: "og:image", content: "https://iwill.dev/og-image.png" },
+    { property: "og:site_name", content: "iwill.dev" },
+
+    { name: "author", content: "William Gonçalves" },
+    {
+      name: "keywords",
+      content:
+        "portfolio, frontend, react, typescript, css, desenvolvedor, programação, conteúdo técnico, learn in public",
+    },
+    { name: "viewport", content: "width=device-width, initial-scale=1" },
+  ];
+}
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -43,15 +79,18 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR" className="dark size-full">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
+      <body className="prose dark:prose-invert prose-neutral prose-xs lg:prose-xl size-full">
+        <div className="absolute inset-0 z-10 size-full">{children}</div>
+        <div className="fixed inset-0 size-full opacity-25">
+          <LetterGlitch />
+        </div>
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -64,15 +103,15 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = "Oops!";
-  let details = "An unexpected error occurred.";
+  let message = "Erro";
+  let details = "Ocorreu um erro inesperado.";
   let stack: string | undefined;
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404" : "Error";
+    message = error.status === 404 ? "404" : "Erro";
     details =
       error.status === 404
-        ? "The requested page could not be found."
+        ? "A página não foi encontrada."
         : error.statusText || details;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
@@ -80,14 +119,20 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
+    <Container>
+      <FuzzyText
+        className="origin-top-right scale-50 self-end lg:scale-100"
+        fontSize="3rem"
+        color="#663399"
+      >
+        {message}
+      </FuzzyText>
+      <h3 className="text-tertiary-100 font-light">{details}</h3>
       {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
+        <pre className="bg-primary-900 w-full overflow-x-auto p-4">
           <code>{stack}</code>
         </pre>
       )}
-    </main>
+    </Container>
   );
 }
