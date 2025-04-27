@@ -12,7 +12,6 @@ export default defineConfig([
       "js/recommended",
       "eslint:recommended",
       "plugin:storybook/recommended",
-      "plugin:tailwindcss/recommended",
       "plugin:react/recommended",
       "plugin:react/jsx-runtime",
       "plugin:react-hooks/recommended",
