@@ -15,7 +15,10 @@ import { LetterGlitch } from "./components/react-bits/letter-glitch";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "iwill.dev | Aprendendo e compartilhando a jornada" },
+    {
+      title:
+        "iwill.dev | Construindo soluções que aproximam pessoas e tecnologias",
+    },
     {
       name: "description",
       content:
