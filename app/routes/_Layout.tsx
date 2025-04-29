@@ -21,6 +21,11 @@ export function loader({ request }: LoaderFunctionArgs) {
       path: "/feed",
       active: pathname === "/feed",
     },
+    {
+      label: "Links",
+      path: "/links",
+      active: pathname === "/links",
+    },
   ];
 }
 
@@ -29,7 +34,7 @@ export default function Layout({ loaderData }: Route.ComponentProps) {
     <>
       <header className="fixed bottom-0 z-50 flex h-12 w-full items-center justify-center bg-neutral-900 text-sm lg:top-0 lg:bottom-auto lg:text-base">
         <nav>
-          <ul className="flex list-none gap-4">
+          <ul className="!m-0 flex list-none gap-4 !ps-0">
             {loaderData.map((item, index) => (
               <li key={index} className="grid place-items-center px-2 lg:w-28">
                 <Link
