@@ -10,71 +10,68 @@ import {
 } from "lucide-react";
 import indexImage from "~/assets/images/index.webp";
 import { Container } from "~/components/layout/container";
-import GlassIcons, {
-  type GlassIconsItem,
-} from "~/components/react-bits/glass-icons";
 
 export default function Links() {
-  const links: GlassIconsItem[] = [
+  const links = [
     {
-      icon: <Phone />,
-      color: "orange",
+      icon: <Phone className="absolute bottom-4 left-4 size-25 opacity-25" />,
       label: "Telefone",
       onClick: () => {
         window.open("tel:+5521965443935", "_blank");
       },
     },
     {
-      icon: <Mail />,
-      color: "red",
+      icon: <Mail className="absolute bottom-4 left-4 size-25 opacity-25" />,
       label: "E-mail",
       onClick: () => {
-        window.open("mailto:iwilldev@outlook.com", "_blank");
+        window.open("mailto:iwilldev@outlook.com.br", "_blank");
       },
     },
     {
-      icon: <MessageCircleCode />,
-      color: "green",
+      icon: (
+        <MessageCircleCode className="absolute bottom-4 left-4 size-25 opacity-25" />
+      ),
       label: "WhatsApp",
       onClick: () => {
         window.open("https://wa.me/5521965443935", "_blank");
       },
     },
     {
-      icon: <Send />,
-      color: "blue",
+      icon: <Send className="absolute bottom-4 left-4 size-25 opacity-25" />,
       label: "Telegram",
       onClick: () => {
         window.open("https://t.me/iwilldev", "_blank");
       },
     },
     {
-      icon: <InstagramIcon />,
-      color: "purple",
+      icon: (
+        <InstagramIcon className="absolute bottom-4 left-4 size-25 opacity-25" />
+      ),
       label: "Instagram",
       onClick: () => {
         window.open("https://instagram.com/iwilldev", "_blank");
       },
     },
     {
-      icon: <LinkedinIcon />,
-      color: "blue",
+      icon: (
+        <LinkedinIcon className="absolute bottom-4 left-4 size-25 opacity-25" />
+      ),
       label: "LinkedIn",
       onClick: () => {
         window.open("https://www.linkedin.com/in/iwilldev/", "_blank");
       },
     },
     {
-      icon: <GithubIcon />,
-      color: "gray",
+      icon: (
+        <GithubIcon className="absolute bottom-4 left-4 size-25 opacity-25" />
+      ),
       label: "GitHub",
       onClick: () => {
         window.open("https://github.com/iwilldev", "_blank");
       },
     },
     {
-      icon: <Code />,
-      color: "red",
+      icon: <Code className="absolute bottom-4 left-4 size-25 opacity-25" />,
       label: "DEVTO",
       onClick: () => {
         window.open("https://dev.to/iwilldev", "_blank");
@@ -91,7 +88,20 @@ export default function Links() {
         src={indexImage}
         alt="Ilustração digital de um homem com barba cheia e careca, vestindo uma camiseta roxa com um pequeno logotipo branco no peito."
       />
-      <GlassIcons items={links} />
+      <div className="my-10 flex flex-wrap justify-center gap-10">
+        {links.map((link) => (
+          <div
+            className="bg-primary-900 hover:bg-primary-800 relative aspect-[2/0.8] w-full basis-[360px] cursor-pointer rounded-2xl object-cover object-left transition-colors"
+            onClick={link.onClick}
+            key={link.label}
+          >
+            {link.icon}
+            <span className="absolute top-0 right-6 bottom-0 flex items-center justify-center text-4xl font-extralight text-white">
+              {link.label}
+            </span>
+          </div>
+        ))}
+      </div>
     </Container>
   );
 }
