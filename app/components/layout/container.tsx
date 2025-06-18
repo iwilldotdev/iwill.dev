@@ -17,7 +17,7 @@ export function Container({
     <Comp
       id={id}
       className={cn(
-        "relative flex min-h-full w-full flex-col gap-4 overflow-x-hidden p-8 pt-8 text-white lg:p-32 lg:pt-32",
+        "relative container mx-auto flex min-h-full w-full flex-col gap-4 overflow-x-hidden p-8 pt-8 text-white lg:p-32 lg:pt-32",
         className,
       )}
     >
