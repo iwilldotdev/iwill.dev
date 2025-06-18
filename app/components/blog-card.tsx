@@ -8,7 +8,7 @@ export function BlogCard({ post }: { post: PostResumedProps }) {
       key={post.id}
       target="_blank"
       rel="noopener noreferrer"
-      className="bg-base-300 relative flex w-full transform flex-col rounded-xl shadow-xl"
+      className="bg-base-300 relative flex w-full transform flex-col rounded-xl opacity-60 shadow-xl transition-opacity hover:opacity-100"
     >
       <figure>
         <img
