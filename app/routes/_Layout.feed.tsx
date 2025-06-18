@@ -9,7 +9,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
   const searchParams = new URL(request.url).searchParams;
   const page = searchParams.get("page") || "1";
   const posts = (await fetch(
-    `https://dev.to/api/articles/latest?username=iwilldev&per_page=10&page=${page}`,
+    `https://dev.to/api/articles/latest?username=iwilldev`,
   ).then((res) => res.json())) as PostResumedProps[];
   return { posts };
 }
