@@ -12,9 +12,40 @@ const imageFile = path.join(process.cwd(), "public/android-chrome-192x192.png");
 const imageFileData = readFileSync(imageFile);
 const imageData = `data:image/png;base64,${imageFileData.toString("base64")}`;
 
+const getBgImageData = async (imagePath?: string): Promise<string | null> => {
+  if (!imagePath) return null;
+  try {
+    const response = await fetch(imagePath);
+    if (!response.ok) {
+      throw new Error(
+        `Falha ao buscar imagem: ${response.status} ${response.statusText}`,
+      );
+    }
+    const contentType = response.headers.get("content-type");
+    if (!contentType) {
+      throw new Error(
+        "Não foi possível determinar o content-type da imagem a partir dos cabeçalhos da resposta.",
+      );
+    }
+    const arrayBuffer = await response.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+    const base64Image = buffer.toString("base64");
+    return `data:${contentType};base64,${base64Image}`;
+  } catch (error) {
+    console.error("Erro ao processar imagem de fundo no servidor:", error);
+    return null;
+  }
+};
+
 export async function generatePostImage(post: PostData) {
+  const bgImageData = await getBgImageData(post.backgroundImage);
   const template = html(`
-    <div style="font-family: 'Syne';" class="flex flex-col justify-between w-full h-full bg-neutral-900 text-white p-20">
+    <div style="font-family: 'Syne';" class="relative flex flex-col justify-between w-full h-full bg-neutral-900 text-white p-20">
+      ${
+        bgImageData
+          ? `<img src="${bgImageData}" alt="Background" class="absolute opacity-50 h-[630px] top-0 right-0 rounded-4xl" />`
+          : ""
+      }
       <div class="flex flex-col mb-8">
         <img src="${imageData}" alt="Logo" class="w-[60px]" />
         <h1 class="text-6xl font-semibold leading-tight" style="white-space: pre-line;">

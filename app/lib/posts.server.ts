@@ -15,6 +15,7 @@ export type PostData = {
   authorImage?: string;
   readingTime?: number;
   slug?: string;
+  backgroundImage?: string;
 };
 
 export function getPosts(): PostData[] {
