@@ -6,8 +6,7 @@ tags: ["TypeScript"]
 author: "William Gonçalves"
 authorImage: "https://github.com/iwilldev.png"
 ---
-
-<img src="https://github.com/user-attachments/assets/6ca93749-16a4-4076-bb05-507a1a7d000e" alt="drawing" width="200"/>
+![pedro-no-carrinho](https://github.com/user-attachments/assets/15c26a2b-0b27-4eea-a337-e1ed3e9436b8)
 
 ### Pedro é um menino autista, hoje com 8 anos.
 
