@@ -1,19 +1,17 @@
 import { Link } from "react-router";
-import type { PostResumedProps } from "~/types/PostResumedProps";
+import type { PostData } from "~/lib/posts.server";
 
-export function BlogCard({ post }: { post: PostResumedProps }) {
+export function BlogCard({ post, slug }: { post: PostData; slug: string }) {
   return (
     <Link
-      to={post.url}
-      key={post.id}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-base-300 relative flex w-full transform flex-col rounded-xl opacity-60 shadow-xl transition-opacity hover:opacity-100"
+      to={`/feed/${slug}`}
+      key={slug}
+      className="bg-base-300 relative flex w-full transform flex-col rounded-xl opacity-80 shadow-xl transition-opacity hover:opacity-100"
     >
       <figure>
         <img
           className="aspect-[2/1] w-full rounded-2xl object-cover object-left"
-          src={post.cover_image || post.social_image}
+          src={`/images/posts/${slug}.png`}
           alt={post.title}
         />
       </figure>

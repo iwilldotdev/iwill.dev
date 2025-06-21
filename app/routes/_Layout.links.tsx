@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import indexImage from "~/assets/images/index.webp";
 import { Container } from "~/components/layout/container";
+import { BlurText } from "~/components/react-bits/blur-text";
 
 export default function Links() {
   const links = [
@@ -80,11 +81,15 @@ export default function Links() {
   ];
   return (
     <Container>
-      <div className="m-0 mt-auto w-5/6 text-[clamp(1.2rem,2.5vw,2rem)] leading-[1.5] font-light whitespace-pre-line lg:w-2/3">
-        Links
-      </div>
+      <BlurText
+        text="Links"
+        animateBy="letters"
+        direction="bottom"
+        onAnimationComplete={() => {}}
+        className="text-primary-600 !m-0 !mb-10 text-3xl lg:text-5xl"
+      />
       <img
-        className="!m-0 aspect-square max-h-[30vh] object-contain brightness-75"
+        className="!m-0 !ml-auto aspect-square max-h-[30vh] object-contain brightness-75"
         src={indexImage}
         alt="Ilustração digital de um homem com barba cheia e careca, vestindo uma camiseta roxa com um pequeno logotipo branco no peito."
       />
@@ -96,7 +101,7 @@ export default function Links() {
             key={link.label}
           >
             {link.icon}
-            <span className="absolute top-0 right-6 bottom-0 flex items-center justify-center text-4xl font-extralight text-white">
+            <span className="absolute top-0 right-6 bottom-0 flex items-center justify-center text-4xl text-[clamp(1rem,1.5vw,1.8rem)] font-extralight text-white">
               {link.label}
             </span>
           </div>

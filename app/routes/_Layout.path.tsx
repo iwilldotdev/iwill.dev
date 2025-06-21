@@ -125,7 +125,6 @@ export default function TimelineDemo({ loaderData }: Route.ComponentProps) {
     <Container element="section">
       <BlurText
         text="Experiência / Projetos"
-        delay={150}
         animateBy="letters"
         direction="bottom"
         onAnimationComplete={() => {}}

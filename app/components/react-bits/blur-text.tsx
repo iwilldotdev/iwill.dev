@@ -21,7 +21,7 @@ interface BlurTextProps {
 
 export const BlurText: React.FC<BlurTextProps> = ({
   text = "",
-  delay = 200,
+  delay = 50,
   className = "",
   animateBy = "words",
   direction = "top",
@@ -112,7 +112,7 @@ export const BlurText: React.FC<BlurTextProps> = ({
         <AnimatedSpan
           key={index}
           style={props}
-          className="inline-block will-change-[transform,filter,opacity]"
+          className="font-title inline-block will-change-[transform,filter,opacity]"
         >
           {elements[index] === " " ? "\u00A0" : elements[index]}
           {animateBy === "words" && index < elements.length - 1 && "\u00A0"}

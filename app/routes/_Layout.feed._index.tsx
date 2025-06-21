@@ -1,16 +1,12 @@
-import type { LoaderFunctionArgs } from "react-router";
+import { type LoaderFunctionArgs } from "react-router";
 import { BlogCard } from "~/components/blog-card";
 import { Container } from "~/components/layout/container";
 import { BlurText } from "~/components/react-bits/blur-text";
-import type { PostResumedProps } from "~/types/PostResumedProps";
-import type { Route } from "./+types/_Layout.feed";
+import { getPosts } from "~/lib/posts.server";
+import type { Route } from "./+types/_Layout.feed._index";
 
 export async function loader({ request }: LoaderFunctionArgs) {
-  const searchParams = new URL(request.url).searchParams;
-  const page = searchParams.get("page") || "1";
-  const posts = (await fetch(
-    `https://dev.to/api/articles/latest?username=iwilldev`,
-  ).then((res) => res.json())) as PostResumedProps[];
+  const posts = getPosts();
   return { posts };
 }
 
@@ -18,8 +14,7 @@ export default function Feed({ loaderData }: Route.ComponentProps) {
   return (
     <Container>
       <BlurText
-        text="Feed"
-        delay={150}
+        text="Blog"
         animateBy="letters"
         direction="bottom"
         onAnimationComplete={() => {}}
@@ -27,7 +22,7 @@ export default function Feed({ loaderData }: Route.ComponentProps) {
       />
       <div className="grid grid-cols-1 gap-8 xl:grid-cols-2">
         {loaderData.posts.map((post) => (
-          <BlogCard key={post.id} post={post} />
+          <BlogCard post={post} slug={post.slug!} key={post.slug} />
         ))}
       </div>
     </Container>

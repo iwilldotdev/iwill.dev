@@ -11,7 +11,6 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import { Container } from "./components/layout/container";
 import { FuzzyText } from "./components/react-bits/fuzzy-text";
-import { LetterGlitch } from "./components/react-bits/letter-glitch";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -91,9 +90,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="prose dark:prose-invert prose-neutral prose-xs lg:prose-xl size-full">
         <div className="absolute inset-0 z-10 size-full">{children}</div>
-        <div className="fixed inset-0 size-full opacity-25">
-          <LetterGlitch />
-        </div>
         <ScrollRestoration />
         <Scripts />
       </body>
