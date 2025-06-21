@@ -51,7 +51,7 @@ export function getPost(slug: string): PostData {
 }
 
 function calculateReadingTime(markdownBody: string) {
-  const WPM = 220;
+  const WPM = 75;
   const plainText = markdownBody
     .replace(/<\/?[^>]+(>|$)/g, "")
     .replace(/[#*`~-]/g, "");

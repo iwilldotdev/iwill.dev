@@ -22,13 +22,18 @@ export async function generatePostImage(post: PostData) {
         </h1>
       </div>
       <div class="flex items-center">
-        <span class="text-2xl text-white">
-          Publicado em ${new Date(post.date).toLocaleDateString("pt-BR", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })} por ${post.author}
-        </span>
+        <div class="flex flex-col">
+          <span class="text-2xl text-white">
+            Publicado em ${new Date(post.date).toLocaleDateString("pt-BR", {
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit",
+            })} por ${post.author}
+          </span>
+          <span class="text-2xl text-white">
+            ${post.readingTime} minutos de leitura
+          </span>
+        </div>
         <div class="flex ml-auto">
           ${post.tags
             .map(
