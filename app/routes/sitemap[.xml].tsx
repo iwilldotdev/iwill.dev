@@ -1,6 +1,6 @@
 import { getPosts } from "~/lib/posts.server.js";
 
-const DOMAIN_URL = "https://iwill.dev";
+const DOMAIN_URL = "https://www.iwill.dev";
 const currentDate = new Date().toISOString();
 
 export async function loader() {
