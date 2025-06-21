@@ -10,7 +10,15 @@ import {
   TimelineSeparator,
   TimelineTitle,
 } from "~/components/ui/timeline";
+import { getPageMetaTags } from "~/lib/utils";
 import type { Route } from "./+types/_Layout.path";
+
+export function meta({}: Route.MetaArgs) {
+  return getPageMetaTags({
+    slug: "path",
+    title: "Experiência / Projetos",
+  });
+}
 
 export function loader({}) {
   return [

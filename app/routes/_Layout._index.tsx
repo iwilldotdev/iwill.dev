@@ -9,6 +9,12 @@ import { ScrollReveal } from "~/components/react-bits/scroll-reveal";
 import TiltedCard from "~/components/react-bits/tilted-card";
 import { Button } from "~/components/ui/button";
 import { useScrollIntoView } from "~/hooks/useScrollIntoView";
+import { getPageMetaTags } from "~/lib/utils";
+import type { Route } from "./+types/_Layout._index";
+
+export function meta({}: Route.MetaArgs) {
+  return getPageMetaTags({ slug: "index" });
+}
 
 export default function Home() {
   return (

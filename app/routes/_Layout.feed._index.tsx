@@ -3,7 +3,15 @@ import { BlogCard } from "~/components/blog-card";
 import { Container } from "~/components/layout/container";
 import { BlurText } from "~/components/react-bits/blur-text";
 import { getPosts } from "~/lib/posts.server";
+import { getPageMetaTags } from "~/lib/utils";
 import type { Route } from "./+types/_Layout.feed._index";
+
+export function meta({}: Route.MetaArgs) {
+  return getPageMetaTags({
+    slug: "feed",
+    title: "Feed",
+  });
+}
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const posts = getPosts();

@@ -61,3 +61,41 @@ export async function generatePostImage(post: PostData) {
   const pngBuffer = await sharp(Buffer.from(svg)).png().toBuffer();
   return pngBuffer;
 }
+
+export async function generatePageImage({
+  title = "iwill.dev",
+}: {
+  title?: string;
+}) {
+  const template = html(`
+    <div style="font-family: 'Syne';" class="flex flex-col justify-between w-full h-full bg-neutral-900 text-white p-20">
+      <div class="flex flex-col mb-8">
+        <img src="${imageData}" alt="Logo" class="w-[60px]" />
+        <h1 class="text-6xl font-semibold leading-tight" style="white-space: pre-line;">
+          ${title}
+        </h1>
+      </div>
+      <div class="flex items-center">
+        <div class="flex flex-col">
+          <span class="text-2xl text-white">
+            iwill.dev | Construindo soluções que aproximam pessoas e tecnologias
+          </span>
+        </div>
+      </div>
+    </div>
+  `);
+  const svg = await satori(template as React.ReactNode, {
+    width: 1200,
+    height: 630,
+    fonts: [
+      {
+        name: "Syne",
+        data: fontData,
+        weight: 600,
+        style: "normal",
+      },
+    ],
+  });
+  const pngBuffer = await sharp(Buffer.from(svg)).png().toBuffer();
+  return pngBuffer;
+}

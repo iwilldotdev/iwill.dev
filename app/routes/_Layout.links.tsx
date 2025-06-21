@@ -11,6 +11,15 @@ import {
 import indexImage from "~/assets/images/index.webp";
 import { Container } from "~/components/layout/container";
 import { BlurText } from "~/components/react-bits/blur-text";
+import { getPageMetaTags } from "~/lib/utils";
+import type { Route } from "./+types/_Layout.links";
+
+export function meta({}: Route.MetaArgs) {
+  return getPageMetaTags({
+    slug: "links",
+    title: "Links",
+  });
+}
 
 export default function Links() {
   const links = [
