@@ -17,6 +17,7 @@ export const meta = ({ data: post }: Route.MetaArgs) => [
       day: "numeric",
     })} por ${post.author} - ${post.readingTime} minutos de leitura`,
   },
+  { name: "äuthor", content: "William Gonçalves" },
   { property: "og:title", content: post.title },
   {
     property: "og:description",
