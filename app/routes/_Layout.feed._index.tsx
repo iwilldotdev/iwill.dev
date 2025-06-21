@@ -13,16 +13,15 @@ export function meta({}: Route.MetaArgs) {
   });
 }
 
+export function headers() {
+  return {
+    "Cache-Control": "max-age=300, s-maxage=3600",
+  };
+}
+
 export async function loader({ request }: LoaderFunctionArgs) {
   const posts = getPosts();
-  return data(
-    { posts },
-    {
-      headers: {
-        "Cache-Control": "public, max-age=3600, s-maxage=3600",
-      },
-    },
-  );
+  return data({ posts });
 }
 
 export default function Feed({ loaderData }: Route.ComponentProps) {

@@ -43,9 +43,12 @@ export async function loader() {
 
   return new Response(sitemapXml, {
     status: 200,
-    headers: {
-      "Content-Type": "application/xml",
-      "Cache-Control": "public, max-age=3600",
-    },
   });
+}
+
+export function headers() {
+  return {
+    "Content-Type": "application/xml",
+    "Cache-Control": "max-age=300, s-maxage=3600",
+  };
 }

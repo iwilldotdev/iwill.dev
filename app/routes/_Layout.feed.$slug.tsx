@@ -53,17 +53,16 @@ const marked = new Marked(
   }),
 );
 
+export function headers() {
+  return {
+    "Cache-Control": "max-age=300, s-maxage=3600",
+  };
+}
+
 export async function loader({ params }: LoaderFunctionArgs) {
   const post = getPost(params.slug!);
   const html = marked.parse(post.body!);
-  return data(
-    { ...post, html },
-    {
-      headers: {
-        "Cache-Control": "public, max-age=3600, s-maxage=3600",
-      },
-    },
-  );
+  return data({ ...post, html });
 }
 
 export default function Feed({ loaderData: post }: Route.ComponentProps) {
