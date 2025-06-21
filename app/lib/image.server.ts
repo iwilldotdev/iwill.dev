@@ -23,7 +23,11 @@ export async function generatePostImage(post: PostData) {
       </div>
       <div class="flex items-center">
         <span class="text-2xl text-white">
-          Publicado em ${new Date(post.date).toLocaleDateString()} por ${post.author}
+          Publicado em ${new Date(post.date).toLocaleDateString("pt-BR", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })} por ${post.author}
         </span>
         <div class="flex ml-auto">
           ${post.tags

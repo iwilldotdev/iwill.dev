@@ -32,8 +32,13 @@ export default function Feed({ loaderData: post }: Route.ComponentProps) {
           {post.title}
         </h1>
         <p className="text-sm font-light text-neutral-400">
-          Publicado em {new Date(post.date).toLocaleDateString()} por{" "}
-          {post.author}
+          Publicado em{" "}
+          {new Date(post.date).toLocaleDateString("pt-BR", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}{" "}
+          por {post.author}
         </p>
         <div
           className="prose lg:prose-lg prose-invert"
