@@ -9,7 +9,14 @@ import type { Route } from "./+types/_Layout.feed.$slug";
 
 export const meta = ({ data: post }: Route.MetaArgs) => [
   { title: `${post.title} - Feed - iwill.dev` },
-  { name: "description", content: post.description },
+  {
+    name: "description",
+    content: `Publicado em ${new Date(post.date).toLocaleDateString("pt-BR", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })} por ${post.author} - ${post.readingTime} minutos de leitura`,
+  },
   { property: "og:title", content: post.title },
   {
     property: "og:description",
