@@ -106,9 +106,12 @@ export default function Feed({ loaderData: post }: Route.ComponentProps) {
       />
       <Container>
         <article>
-          <h1 className="font-title max-w-[60vw] font-light whitespace-pre-line">
+          <h1 className="font-title !mb-5 max-w-[60vw] font-light whitespace-pre-line">
             {post.title}
           </h1>
+          <p className="font-title mb-4 text-lg font-light text-neutral-200">
+            {post.description || ""}
+          </p>
           <p className="text-sm font-light text-neutral-400">
             Publicado em{" "}
             {new Date(post.date).toLocaleDateString("pt-BR", {

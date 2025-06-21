@@ -20,6 +20,9 @@ export async function generatePostImage(post: PostData) {
         <h1 class="text-6xl font-semibold leading-tight" style="white-space: pre-line;">
           ${post.title}
         </h1>
+        <p class="text-3xl font-light text-neutral-200">
+          ${post.description || ""}
+        </p>
       </div>
       <div class="flex items-center">
         <div class="flex flex-col">
