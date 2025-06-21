@@ -2,7 +2,7 @@ import hljs from "highlight.js";
 import "highlight.js/styles/github-dark.min.css";
 import { Marked } from "marked";
 import { markedHighlight } from "marked-highlight";
-import { type LoaderFunctionArgs } from "react-router";
+import { data, type LoaderFunctionArgs } from "react-router";
 import { Container } from "~/components/layout/container";
 import { getPost } from "~/lib/posts.server";
 import type { Route } from "./+types/_Layout.feed.$slug";
@@ -56,7 +56,14 @@ const marked = new Marked(
 export async function loader({ params }: LoaderFunctionArgs) {
   const post = getPost(params.slug!);
   const html = marked.parse(post.body!);
-  return { ...post, html };
+  return data(
+    { ...post, html },
+    {
+      headers: {
+        "Cache-Control": "public, max-age=3600, s-maxage=3600",
+      },
+    },
+  );
 }
 
 export default function Feed({ loaderData: post }: Route.ComponentProps) {

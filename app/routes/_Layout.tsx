@@ -1,32 +1,39 @@
-import { Link, Outlet, type LoaderFunctionArgs } from "react-router";
+import { data, Link, Outlet, type LoaderFunctionArgs } from "react-router";
 import { cn } from "~/lib/utils";
 import type { Route } from "./+types/_Layout";
 
 export function loader({ request }: LoaderFunctionArgs) {
   const url = new URL(request.url);
   const pathname = url.pathname;
-  return [
+  return data(
+    [
+      {
+        label: "Home",
+        path: "/",
+        active: pathname === "/",
+      },
+      {
+        label: "Trabalho",
+        path: "/path",
+        active: pathname === "/path",
+      },
+      {
+        label: "Feed",
+        path: "/feed",
+        active: pathname === "/feed",
+      },
+      {
+        label: "Links",
+        path: "/links",
+        active: pathname === "/links",
+      },
+    ],
     {
-      label: "Home",
-      path: "/",
-      active: pathname === "/",
+      headers: {
+        "Cache-Control": "public, max-age=3600, s-maxage=3600",
+      },
     },
-    {
-      label: "Trabalho",
-      path: "/path",
-      active: pathname === "/path",
-    },
-    {
-      label: "Feed",
-      path: "/feed",
-      active: pathname === "/feed",
-    },
-    {
-      label: "Links",
-      path: "/links",
-      active: pathname === "/links",
-    },
-  ];
+  );
 }
 
 export default function Layout({ loaderData }: Route.ComponentProps) {

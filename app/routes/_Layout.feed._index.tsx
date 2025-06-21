@@ -1,4 +1,4 @@
-import { type LoaderFunctionArgs } from "react-router";
+import { data, type LoaderFunctionArgs } from "react-router";
 import { BlogCard } from "~/components/blog-card";
 import { Container } from "~/components/layout/container";
 import { BlurText } from "~/components/react-bits/blur-text";
@@ -15,7 +15,14 @@ export function meta({}: Route.MetaArgs) {
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const posts = getPosts();
-  return { posts };
+  return data(
+    { posts },
+    {
+      headers: {
+        "Cache-Control": "public, max-age=3600, s-maxage=3600",
+      },
+    },
+  );
 }
 
 export default function Feed({ loaderData }: Route.ComponentProps) {
