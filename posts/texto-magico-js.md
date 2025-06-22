@@ -4,6 +4,7 @@ date: "2020-11-26T00:00:00.000"
 tags: ["JavaScript"]
 author: "William Gonçalves"
 authorImage: "https://github.com/iwilldev.png"
+backgroundImage: "javascript"
 ---
 
 > “Raios, herege! Estás a me dizer que os escritos surgirão sozinhos? Isso não é feitiço, ou bruxaria?”

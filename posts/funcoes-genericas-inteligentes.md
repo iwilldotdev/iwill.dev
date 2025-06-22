@@ -4,6 +4,7 @@ date: "2025-06-18T00:00:00.000"
 tags: ["TypeScript"]
 author: "William Gonçalves"
 authorImage: "https://github.com/iwilldev.png"
+backgroundImage: "typescript"
 ---
 
 O que faz uma lib parecer "mágica"? Inferência de tipos!

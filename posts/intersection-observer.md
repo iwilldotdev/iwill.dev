@@ -1,9 +1,10 @@
 ---
-title: "Intersection Observer - Lazy loading, animações em scroll e scroll infinito de forma nativa e sem libs"
+title: "Intersection Observer - Lazy loading, animações e scroll infinito sem libs"
 date: "2022-12-22T00:00:00.000"
 tags: ["JavaScript"]
 author: "William Gonçalves"
 authorImage: "https://github.com/iwilldev.png"
+backgroundImage: "javascript"
 ---
 
 Salve, devs e divas!

@@ -4,6 +4,7 @@ date: "2023-01-26T00:00:00.000"
 tags: ["Remix", "React"]
 author: "William Gonçalves"
 authorImage: "https://github.com/iwilldev.png"
+backgroundImage: "remix"
 ---
 
 Esse artigo é uma tradução do post [Why I Love Remix](https://kentcdodds.com/blog/why-i-love-remix) do [Kent C. Dodds](https://kentcdodds.com). Obrigado, Kent, por permitir a tradução do conteúdo e por compartilhar tanto conhecimento com a comunidade.

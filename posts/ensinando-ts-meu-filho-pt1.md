@@ -5,7 +5,7 @@ date: "2025-06-19T00:00:00.000"
 tags: ["TypeScript"]
 author: "William Gonçalves"
 authorImage: "https://github.com/iwilldev.png"
-backgroundImage: "https://github.com/user-attachments/assets/a26d62fd-7e44-45d0-85c8-63003e3abeaf"
+backgroundImage: "pedro"
 ---
 
 ![pedro-no-carrinho](https://github.com/user-attachments/assets/15c26a2b-0b27-4eea-a337-e1ed3e9436b8)

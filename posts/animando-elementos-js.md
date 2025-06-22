@@ -4,6 +4,7 @@ date: "2021-01-14T00:00:00.000"
 tags: ["JavaScript"]
 author: "William Gonçalves"
 authorImage: "https://github.com/iwilldev.png"
+backgroundImage: "javascript"
 ---
 
 ## **Como testar se um elemento está no viewport?**

@@ -4,6 +4,7 @@ date: "2021-01-03T00:00:00.000"
 tags: ["CSS"]
 author: "William Gonçalves"
 authorImage: "https://github.com/iwilldev.png"
+backgroundImage: "css"
 ---
 
 ## *We know the JS way*
