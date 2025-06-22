@@ -8,37 +8,51 @@ import type { PostData } from "./posts.server";
 const fontFile = path.join(process.cwd(), "public/fonts/Syne-Medium.ttf");
 const fontData = readFileSync(fontFile);
 
-const imageFile = path.join(process.cwd(), "public/android-chrome-192x192.png");
-const imageFileData = readFileSync(imageFile);
-const imageData = `data:image/png;base64,${imageFileData.toString("base64")}`;
+const logoImagePath = path.join(
+  process.cwd(),
+  "public/android-chrome-192x192.png",
+);
+const logoImageFile = readFileSync(logoImagePath);
+const logoImageData = `data:image/png;base64,${logoImageFile.toString("base64")}`;
 
-const getBgImageData = async (imagePath?: string): Promise<string | null> => {
-  if (!imagePath) return null;
+const backgroundImageTokens = [
+  "css",
+  "default",
+  "javascript",
+  "pedro",
+  "react-router",
+  "remix",
+  "typescript",
+] as const;
+
+type BackgroundImageToken = (typeof backgroundImageTokens)[number];
+
+const getValidBgToken = (token: string): BackgroundImageToken => {
+  if ((backgroundImageTokens as readonly string[]).includes(token)) {
+    return token as BackgroundImageToken;
+  }
+  return "default";
+};
+
+export const getBgImageData = (bgToken: string) => {
+  const validBgToken = getValidBgToken(bgToken);
+  const bgImagePath = path.join(
+    process.cwd(),
+    `public/bg-covers/${validBgToken}.jpg`,
+  );
   try {
-    const response = await fetch(imagePath);
-    if (!response.ok) {
-      throw new Error(
-        `Falha ao buscar imagem: ${response.status} ${response.statusText}`,
-      );
-    }
-    const contentType = response.headers.get("content-type");
-    if (!contentType) {
-      throw new Error(
-        "Não foi possível determinar o content-type da imagem a partir dos cabeçalhos da resposta.",
-      );
-    }
-    const arrayBuffer = await response.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-    const base64Image = buffer.toString("base64");
-    return `data:${contentType};base64,${base64Image}`;
+    const bgImageFile = readFileSync(bgImagePath);
+    return `data:image/jpeg;base64,${bgImageFile.toString("base64")}`;
   } catch (error) {
-    console.error("Erro ao processar imagem de fundo no servidor:", error);
+    console.error(`Failed to load image for token: ${validBgToken}`, error);
     return null;
   }
 };
 
 export async function generatePostImage(post: PostData) {
-  const bgImageData = await getBgImageData(post.backgroundImage);
+  const bgImageData = getBgImageData(
+    (post.backgroundImage as BackgroundImageToken) || "default",
+  );
   const template = html(`
     <div style="font-family: 'Syne';" class="relative flex flex-col justify-between w-full h-full bg-neutral-900 text-white p-20">
       ${
@@ -47,8 +61,8 @@ export async function generatePostImage(post: PostData) {
           : ""
       }
       <div class="flex flex-col mb-8">
-        <img src="${imageData}" alt="Logo" class="w-[60px]" />
-        <h1 class="text-6xl font-semibold leading-tight" style="white-space: pre-line;">
+        <img src="${logoImageData}" alt="Logo" class="w-[60px]" />
+        <h1 class="text-6xl font-semibold leading-tight" style="white-space: pre-line;" style="max-width: 800px">
           ${post.title}
         </h1>
         <p class="text-3xl font-light text-neutral-200">
@@ -104,7 +118,7 @@ export async function generatePageImage({
   const template = html(`
     <div style="font-family: 'Syne';" class="flex flex-col justify-between w-full h-full bg-neutral-900 text-white p-20">
       <div class="flex flex-col mb-8">
-        <img src="${imageData}" alt="Logo" class="w-[60px]" />
+        <img src="${logoImageData}" alt="Logo" class="w-[60px]" />
         <h1 class="text-6xl font-semibold leading-tight" style="white-space: pre-line;">
           ${title}
         </h1>
