@@ -105,10 +105,10 @@ const carro = {
 console.log(Object.values(carro))
 // locais dos adesivos: ['adesivo no capô']
 
-console.log(carro[adesivoi])
+console.log(carro[adesivo1])
 // 'adesivo embaixo do banco'
 
-console.lng(cerro adesivo2]]
+console.lng(carro[adesivo2])
 // 'adesivo na caixa de roda'
 ```
 
