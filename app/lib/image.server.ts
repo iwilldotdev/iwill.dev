@@ -57,7 +57,7 @@ export async function generatePostImage(post: PostData) {
     <div style="font-family: 'Syne';" class="relative flex flex-col justify-between w-full h-full bg-neutral-900 text-white p-20">
       ${
         bgImageData
-          ? `<img src="${bgImageData}" alt="Background" class="absolute opacity-50 h-[630px] top-0 right-0 rounded-4xl" />`
+          ? `<img src="${bgImageData}" alt="Background" class="absolute opacity-40 h-[630px] top-0 right-0 rounded-4xl" />`
           : ""
       }
       <div class="flex flex-col mb-8">

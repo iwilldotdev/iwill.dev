@@ -5,7 +5,7 @@ import { markedHighlight } from "marked-highlight";
 import { data, type LoaderFunctionArgs } from "react-router";
 import { Container } from "~/components/layout/container";
 import { getPost } from "~/lib/posts.server";
-import type { Route } from "./+types/_Layout.feed.$slug";
+import type { Route } from "./+types/_Layout.feed.$slug.($lang)";
 
 export const meta = ({ data: post }: Route.MetaArgs) => [
   { title: `${post.title} - Feed - iwill.dev` },
@@ -68,9 +68,9 @@ export function headers() {
 }
 
 export async function loader({ params }: LoaderFunctionArgs) {
-  const post = getPost(params.slug!);
+  const post = getPost(params.slug!, params.lang);
   const html = marked.parse(post.body!);
-  return data({ ...post, html });
+  return data({ ...post, html, lang: params.lang || "pt" });
 }
 
 export default function Feed({ loaderData: post }: Route.ComponentProps) {
@@ -98,6 +98,7 @@ export default function Feed({ loaderData: post }: Route.ComponentProps) {
       "@id": postUrl,
     },
   };
+  const isEnglishVersion = post.lang === "en";
   return (
     <>
       <script
@@ -112,17 +113,32 @@ export default function Feed({ loaderData: post }: Route.ComponentProps) {
           <p className="font-title mb-4 text-lg font-light text-neutral-200">
             {post.description || ""}
           </p>
+          {post.i18n == "en" && (
+            <p className="text-sm font-light text-neutral-400">
+              This post is also available in{" "}
+              <a
+                href={`/feed/${post.slug}/en`}
+                className="text-blue-500 hover:underline"
+              >
+                English
+              </a>
+            </p>
+          )}
           <p className="text-sm font-light text-neutral-400">
-            Publicado em{" "}
-            {new Date(post.date).toLocaleDateString("pt-BR", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}{" "}
-            por {post.author} - {post.readingTime} minutos de leitura
+            {isEnglishVersion ? "Published on" : "Publicado em"}{" "}
+            {new Date(post.date).toLocaleDateString(
+              isEnglishVersion ? "en-US" : "pt-BR",
+              {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              },
+            )}{" "}
+            {isEnglishVersion ? "by" : "por"} {post.author} - {post.readingTime}{" "}
+            {isEnglishVersion ? "minutes of reading" : "minutos de leitura"}
           </p>
           <div
-            className="prose lg:prose-lg prose-invert"
+            className="prose lg:prose-lg prose-invert prose-code:font prose-code:after:content-none prose-code:before:content-none prose-code:bg-primary-800 prose-code:p-px"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
         </article>

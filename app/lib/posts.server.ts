@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 
 const postsDirectory = path.join(process.cwd(), "posts");
+const postsDirectoryEn = path.join(process.cwd(), "posts-en");
 
 export type PostData = {
   title: string;
@@ -16,6 +17,7 @@ export type PostData = {
   readingTime?: number;
   slug?: string;
   backgroundImage?: string;
+  i18n?: string;
 };
 
 export function getPosts(): PostData[] {
@@ -35,10 +37,15 @@ export function getPosts(): PostData[] {
   );
 }
 
-export function getPost(slug: string): PostData {
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
+export function getPost(slug: string, lang?: string): PostData {
+  const defaultPath = path.join(postsDirectory, `${slug}.md`);
+  const enPath = path.join(postsDirectoryEn, `${slug}.md`);
+  const fullPath = lang === "en" ? enPath : defaultPath;
   try {
-    const fileContents = fs.readFileSync(fullPath, "utf8");
+    let fileContents = fs.readFileSync(fullPath, "utf8");
+    if (!fileContents && lang === "en") {
+      return getPost(slug);
+    }
     const { attributes, body } = fm<PostData>(fileContents);
     return {
       ...attributes,
