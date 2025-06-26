@@ -2,7 +2,7 @@ import hljs from "highlight.js";
 import "highlight.js/styles/github-dark.min.css";
 import { Marked } from "marked";
 import { markedHighlight } from "marked-highlight";
-import { data, type LoaderFunctionArgs } from "react-router";
+import { data, redirect, type LoaderFunctionArgs } from "react-router";
 import { Container } from "~/components/layout/container";
 import { getPost } from "~/lib/posts.server";
 import type { Route } from "./+types/_Layout.feed.$slug.($lang)";
@@ -69,6 +69,9 @@ export function headers() {
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const post = getPost(params.slug!, params.lang);
+  if (!post) {
+    return redirect(`/feed/${params.slug}`);
+  }
   const html = marked.parse(post.body!);
   return data({ ...post, html, lang: params.lang || "pt" });
 }

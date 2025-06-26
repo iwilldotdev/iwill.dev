@@ -37,22 +37,23 @@ export function getPosts(): PostData[] {
   );
 }
 
-export function getPost(slug: string, lang?: string): PostData {
+export function getPost(slug: string, lang?: string): PostData | undefined {
   const defaultPath = path.join(postsDirectory, `${slug}.md`);
   const enPath = path.join(postsDirectoryEn, `${slug}.md`);
   const fullPath = lang === "en" ? enPath : defaultPath;
   try {
-    let fileContents = fs.readFileSync(fullPath, "utf8");
-    if (!fileContents && lang === "en") {
-      return getPost(slug);
+    try {
+      let fileContents = fs.readFileSync(fullPath, "utf8");
+      const { attributes, body } = fm<PostData>(fileContents);
+      return {
+        ...attributes,
+        slug,
+        body,
+        readingTime: calculateReadingTime(body),
+      };
+    } catch (error) {
+      return undefined;
     }
-    const { attributes, body } = fm<PostData>(fileContents);
-    return {
-      ...attributes,
-      slug,
-      body,
-      readingTime: calculateReadingTime(body),
-    };
   } catch (error) {
     throw new Response("Not Found", { status: 404 });
   }
