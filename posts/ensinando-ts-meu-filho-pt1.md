@@ -4,7 +4,7 @@ description: "Ensinando TypeScript para o meu filho autista (pt 1)"
 date: "2025-06-19T00:00:00.000"
 tags: ["TypeScript"]
 author: "William Gonçalves"
-authorImage: "https://github.com/iwilldev.png"
+authorImage: "https://github.com/iwilldotdev.png"
 backgroundImage: "pedro"
 ---
 

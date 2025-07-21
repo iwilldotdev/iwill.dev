@@ -3,7 +3,7 @@ title: "Mudando tema da tela com CSS Puro (Dark/Light Mode)"
 date: "2021-01-03T00:00:00.000"
 tags: ["CSS"]
 author: "William Gonçalves"
-authorImage: "https://github.com/iwilldev.png"
+authorImage: "https://github.com/iwilldotdev.png"
 backgroundImage: "css"
 ---
 

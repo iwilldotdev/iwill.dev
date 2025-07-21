@@ -3,7 +3,7 @@ title: "Por que eu amo Remix? \n(por Kent C. Dodds)"
 date: "2023-01-26T00:00:00.000"
 tags: ["Remix", "React"]
 author: "William Gonçalves"
-authorImage: "https://github.com/iwilldev.png"
+authorImage: "https://github.com/iwilldotdev.png"
 backgroundImage: "remix"
 ---
 

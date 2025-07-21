@@ -3,7 +3,7 @@ title: "Animando elementos quando saem e entram na tela com JavaScript"
 date: "2021-01-14T00:00:00.000"
 tags: ["JavaScript"]
 author: "William Gonçalves"
-authorImage: "https://github.com/iwilldev.png"
+authorImage: "https://github.com/iwilldotdev.png"
 backgroundImage: "javascript"
 ---
 

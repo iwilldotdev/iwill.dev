@@ -3,7 +3,7 @@ title: "Texto 'mágico' escrito automaticamente com JavaScript"
 date: "2020-11-26T00:00:00.000"
 tags: ["JavaScript"]
 author: "William Gonçalves"
-authorImage: "https://github.com/iwilldev.png"
+authorImage: "https://github.com/iwilldotdev.png"
 backgroundImage: "javascript"
 ---
 

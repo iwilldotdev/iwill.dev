@@ -1,12 +1,12 @@
 import {
-  Code,
   GithubIcon,
   InstagramIcon,
   LinkedinIcon,
   Mail,
   MessageCircleCode,
+  Music2,
   Phone,
-  Send,
+  X,
 } from "lucide-react";
 import indexImage from "~/assets/images/index.webp";
 import { Container } from "~/components/layout/container";
@@ -24,14 +24,14 @@ export function meta({}: Route.MetaArgs) {
 export default function Links() {
   const links = [
     {
-      icon: <Phone className="absolute bottom-4 left-4 size-25 opacity-25" />,
+      icon: <Phone className="absolute bottom-4 left-4 size-12 opacity-25" />,
       label: "Telefone",
       onClick: () => {
         window.open("tel:+5521965443935", "_blank");
       },
     },
     {
-      icon: <Mail className="absolute bottom-4 left-4 size-25 opacity-25" />,
+      icon: <Mail className="absolute bottom-4 left-4 size-12 opacity-25" />,
       label: "E-mail",
       onClick: () => {
         window.open("mailto:iwilldev@outlook.com.br", "_blank");
@@ -39,7 +39,7 @@ export default function Links() {
     },
     {
       icon: (
-        <MessageCircleCode className="absolute bottom-4 left-4 size-25 opacity-25" />
+        <MessageCircleCode className="absolute bottom-4 left-4 size-12 opacity-25" />
       ),
       label: "WhatsApp",
       onClick: () => {
@@ -47,44 +47,44 @@ export default function Links() {
       },
     },
     {
-      icon: <Send className="absolute bottom-4 left-4 size-25 opacity-25" />,
-      label: "Telegram",
-      onClick: () => {
-        window.open("https://t.me/iwilldev", "_blank");
-      },
-    },
-    {
       icon: (
-        <InstagramIcon className="absolute bottom-4 left-4 size-25 opacity-25" />
+        <InstagramIcon className="absolute bottom-4 left-4 size-12 opacity-25" />
       ),
       label: "Instagram",
       onClick: () => {
-        window.open("https://instagram.com/iwilldev", "_blank");
+        window.open("https://instagram.com/iwilldotdev", "_blank");
       },
     },
     {
       icon: (
-        <LinkedinIcon className="absolute bottom-4 left-4 size-25 opacity-25" />
+        <LinkedinIcon className="absolute bottom-4 left-4 size-12 opacity-25" />
       ),
       label: "LinkedIn",
       onClick: () => {
-        window.open("https://www.linkedin.com/in/iwilldev/", "_blank");
+        window.open("https://www.linkedin.com/in/iwilldotdev/", "_blank");
       },
     },
     {
       icon: (
-        <GithubIcon className="absolute bottom-4 left-4 size-25 opacity-25" />
+        <GithubIcon className="absolute bottom-4 left-4 size-12 opacity-25" />
       ),
       label: "GitHub",
       onClick: () => {
-        window.open("https://github.com/iwilldev", "_blank");
+        window.open("https://github.com/iwilldotdev", "_blank");
       },
     },
     {
-      icon: <Code className="absolute bottom-4 left-4 size-25 opacity-25" />,
-      label: "DEVTO",
+      icon: <X className="absolute bottom-4 left-4 size-12 opacity-25" />,
+      label: "X",
       onClick: () => {
-        window.open("https://dev.to/iwilldev", "_blank");
+        window.open("https://x.com/iwilldotdev", "_blank");
+      },
+    },
+    {
+      icon: <Music2 className="absolute bottom-4 left-4 size-12 opacity-25" />,
+      label: "TikTok",
+      onClick: () => {
+        window.open("https://www.tiktok.com/@iwilldotdev", "_blank");
       },
     },
   ];
@@ -105,7 +105,7 @@ export default function Links() {
       <div className="my-10 flex flex-wrap justify-center gap-10">
         {links.map((link) => (
           <div
-            className="bg-primary-900 hover:bg-primary-800 relative aspect-[2/0.8] w-full basis-[360px] cursor-pointer rounded-2xl object-cover object-left transition-colors"
+            className="bg-primary-900 hover:bg-primary-800 relative aspect-[2/0.5] w-full basis-[360px] cursor-pointer rounded-2xl object-cover object-left transition-colors"
             onClick={link.onClick}
             key={link.label}
           >

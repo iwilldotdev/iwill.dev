@@ -3,7 +3,7 @@ title: "React Router 7: \n'Multiple Actions' in a Single Route"
 date: "2025-06-26T00:00:00.000"
 tags: ["React Router", "Remix"]
 author: "William Gonçalves"
-authorImage: "https://github.com/iwilldev.png"
+authorImage: "https://github.com/iwilldotdev.png"
 backgroundImage: "react-router"
 ---
 
@@ -430,7 +430,7 @@ The `action` ceases to be a "narrow path," giving way to countless possibilities
 
 ---
 
-You can check out the <a href="https://github.com/iwilldev/rr7-multiple-actions" target="_blank">complete example in the repository</a>, where I have defined different routes for each approach.
+You can check out the <a href="https://github.com/iwilldotdev/rr7-multiple-actions" target="_blank">complete example in the repository</a>, where I have defined different routes for each approach.
 
 And also test it <a href="https://rr7-multiple-actions.vercel.app/" target="_blank">live</a>, to get a better view of the different scenarios, inspect the app, and everything else.
 

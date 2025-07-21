@@ -3,7 +3,7 @@ title: "Funções \nGenéricas \nInteligentes"
 date: "2025-06-18T00:00:00.000"
 tags: ["TypeScript"]
 author: "William Gonçalves"
-authorImage: "https://github.com/iwilldev.png"
+authorImage: "https://github.com/iwilldotdev.png"
 backgroundImage: "typescript"
 ---
 
